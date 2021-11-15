@@ -1,0 +1,2 @@
+rootProject.name = "Pro_FußballTaktikBoard"
+include ':app'
