@@ -19,6 +19,7 @@ class MainActivity : Activity() {
     lateinit var adapter: RecyclerAdapter_Main
     var ProjectList: ArrayList<String> = ArrayList()
 
+    // test
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
