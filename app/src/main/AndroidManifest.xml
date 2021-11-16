@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pro_FußballTaktikBoard">
-        <activity android:name=".ActivityFirstField"></activity>
+        <activity
+            android:name=".TestImagesActivity"
+            android:exported="false" />
+        <activity android:name=".ActivityFirstField" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
