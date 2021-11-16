@@ -16,6 +16,11 @@ class ActivityFirstField : Activity() {
         binding = ActivityFirstFieldBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.buttonNextField.setOnClickListener {
+            val intentToNextField: Intent = Intent(this, ActivitySecondField::class.java)
+            startActivity(intentToNextField)
+        }
+
         binding.buttonFieldBack.setOnClickListener {
             val intentBackToMain: Intent = Intent(this, MainActivity::class.java)
             startActivity(intentBackToMain)
