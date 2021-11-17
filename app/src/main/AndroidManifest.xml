@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pro_FußballTaktikBoard">
-        <activity android:name=".ActivityThirdField"></activity>
+        <activity android:name=".ActivityThirdField" />
         <activity android:name=".ActivitySecondField" />
         <activity android:name=".ActivityFirstField" />
         <activity android:name=".MainActivity">

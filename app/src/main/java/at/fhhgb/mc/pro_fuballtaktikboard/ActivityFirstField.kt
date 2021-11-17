@@ -1,15 +1,13 @@
 package at.fhhgb.mc.pro_fuballtaktikboard
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import at.fhhgb.mc.pro_fuballtaktikboard.databinding.ActivityFirstFieldBinding
-import at.fhhgb.mc.pro_fuballtaktikboard.databinding.ActivityMainBinding
 
-class ActivityFirstField : Activity() {
+class ActivityFirstField : AppCompatActivity() {
     lateinit var binding: ActivityFirstFieldBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,5 +24,10 @@ class ActivityFirstField : Activity() {
             startActivity(intentBackToMain)
         }
 
+        val fragment = DrawFragment()
+        val ft = supportFragmentManager.beginTransaction()
+        ft.setReorderingAllowed(true)
+        ft.replace(R.id.fragmentContainer_first_field, fragment)
+        ft.commit()
     }
 }

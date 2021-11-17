@@ -1,12 +1,11 @@
 package at.fhhgb.mc.pro_fuballtaktikboard
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import at.fhhgb.mc.pro_fuballtaktikboard.databinding.ActivityThirdFieldBinding
 
-class ActivityThirdField : Activity() {
+class ActivityThirdField : AppCompatActivity() {
 
     lateinit var binding: ActivityThirdFieldBinding
 
@@ -24,6 +23,12 @@ class ActivityThirdField : Activity() {
             val intentBackToMenu: Intent = Intent(this, MainActivity::class.java)
             startActivity(intentBackToMenu)
         }
+
+        val fragment = DrawFragment()
+        val ft = supportFragmentManager.beginTransaction()
+        ft.setReorderingAllowed(true)
+        ft.replace(R.id.fragmentContainer_third_field, fragment)
+        ft.commit()
 
     }
 }
