@@ -69,7 +69,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     }
 
     override fun surfaceDestroyed(holder: SurfaceHolder) {
-        TODO("Not yet implemented")
+        super.onDestroyView()
     }
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
