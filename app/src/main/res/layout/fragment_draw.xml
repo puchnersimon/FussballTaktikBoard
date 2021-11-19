@@ -61,6 +61,24 @@
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/eraser" />
 
+                    <ImageView
+                        android:id="@+id/fragment_draw_black"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/black" />
+
+                    <ImageView
+                        android:id="@+id/fragment_draw_red"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/red" />
+
+                    <ImageView
+                        android:id="@+id/fragment_draw_yellow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/yellow" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -80,6 +98,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/textfield" />
+
+                    <ImageView
+                        android:id="@+id/fragment_draw_white"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/white" />
+
+                    <ImageView
+                        android:id="@+id/fragment_draw_blue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/blue" />
+
+                    <ImageView
+                        android:id="@+id/fragment_draw_orange"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/orange" />
 
                 </LinearLayout>
 
