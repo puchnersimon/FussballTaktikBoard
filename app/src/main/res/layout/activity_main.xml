@@ -41,10 +41,21 @@
         android:id="@+id/recycler_view_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_main_title" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="Projects:"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view_main"
+        app:layout_constraintStart_toStartOf="@+id/recycler_view_main" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

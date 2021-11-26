@@ -10,7 +10,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        app:cardBackgroundColor="@android:color/darker_gray">
+        app:cardBackgroundColor="#91908E"
+        app:cardCornerRadius="45dp">
 
         <TextView
             android:id="@+id/textView_rv_cell_project"
@@ -28,7 +29,8 @@
             android:layout_height="60dp"
             android:layout_gravity="right|center_vertical"
             android:layout_marginRight="50dp"
-            android:src="@drawable/ic_baseline_delete_forever_24" />
+            android:background="#91908E"
+            android:src="@drawable/trash" />
 
     </androidx.cardview.widget.CardView>
 </LinearLayout>

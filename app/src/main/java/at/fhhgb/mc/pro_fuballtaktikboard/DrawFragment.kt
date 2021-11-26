@@ -43,7 +43,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
         surfaceHolder.addCallback(this)
 
         surfaceView.setZOrderOnTop(true)
-        surfaceView.setBackgroundColor(Color.WHITE)
+        surfaceView.setBackgroundColor(Color.TRANSPARENT)
         surfaceView.setOnTouchListener(this)
 
 
