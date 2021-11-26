@@ -63,16 +63,17 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/second_field_background"
         android:layout_width="412dp"
         android:layout_height="579dp"
-        android:scaleX="1.9"
-        android:scaleY="1.9"
+        android:scaleX="2.2"
+        android:scaleY="2.15"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/fragmentContainer_second_field"
         app:layout_constraintHorizontal_bias="0.31"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/fragmentContainer_second_field"
+        app:layout_constraintVertical_bias="0.51"
         app:srcCompat="@drawable/goalarea" />
 
 
