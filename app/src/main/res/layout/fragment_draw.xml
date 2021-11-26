@@ -28,9 +28,9 @@
 
         <LinearLayout
             android:id="@+id/fragment_draw_palette"
-            android:background="@drawable/shape_draw_palette"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/shape_draw_palette"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

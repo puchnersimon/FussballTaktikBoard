@@ -10,7 +10,8 @@ import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import at.fhhgb.mc.pro_fuballtaktikboard.databinding.FragmentDrawBinding
 
-class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, View.OnClickListener, DialogInterface.OnClickListener {
+class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, View.OnClickListener,
+    DialogInterface.OnClickListener {
 
     private lateinit var binding: FragmentDrawBinding
 
@@ -18,10 +19,9 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     private lateinit var surfaceHolder: SurfaceHolder
     private lateinit var paint: Paint
     private lateinit var path: Path
-    //seekbar eraser - brauchen wir vl nicht
+    //seekbar eraser - brauchen wir vll nicht
 
-    private lateinit var drawBitmap : Bitmap
-
+    private lateinit var drawBitmap: Bitmap
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,19 +44,11 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
         surfaceHolder.addCallback(this)
 
         surfaceView.setZOrderOnTop(true)
-        //surfaceView.setBackgroundColor(Color.WHITE)
+        surfaceView.setBackgroundColor(Color.BLUE)
         surfaceView.setOnTouchListener(this)
 
         return binding.root
     }
-
-
-
-
-
-
-
-
 
 
     override fun surfaceCreated(holder: SurfaceHolder) {

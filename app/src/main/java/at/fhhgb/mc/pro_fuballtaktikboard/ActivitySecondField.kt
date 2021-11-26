@@ -29,7 +29,7 @@ class ActivitySecondField : AppCompatActivity() {
             startActivity(intentBackToMenu)
         }
 
-        val fragment = DrawFragment()
+        val fragment = DrawFragment2()
         val ft = supportFragmentManager.beginTransaction()
         ft.setReorderingAllowed(true)
         ft.replace(R.id.fragmentContainer_second_field, fragment)
