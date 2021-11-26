@@ -24,6 +24,8 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
         android:background="@color/white"
+        android:scaleX="3"
+        android:scaleY="3"
         android:src="@android:drawable/ic_input_add"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
