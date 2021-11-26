@@ -53,7 +53,7 @@ class MainActivity : Activity() {
         recyclerView.adapter = adapter
 
 
-        //testbutton - went to next action
+        //testbutton
         binding.buttonTest.setOnClickListener {
             val intentNextAc: Intent = Intent(this, ActivityFirstField::class.java)
             startActivity(intentNextAc)
