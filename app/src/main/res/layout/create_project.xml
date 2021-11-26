@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_project_layout"
+    android:layout_width="550dp"
+    android:layout_height="300dp"
+    android:layout_gravity="center"
+    android:background="@drawable/corner_bottom"
+    android:backgroundTintMode="src_atop">
+
+    <TextView
+        android:id="@+id/create_project_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/copse"
+        android:text="Create new project!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#85099A"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.060000002" />
+
+    <EditText
+        android:id="@+id/create_project_project_name"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="90dp"
+        android:ems="10"
+        android:fontFamily="@font/copse"
+        android:hint="project name"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_project_TV"
+        app:layout_constraintVertical_bias="0.20999998" />
+
+    <Button
+        android:id="@+id/create_layout_cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#A60E42"
+        android:fontFamily="@font/copse"
+        android:text="Cancel"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/create_project_project_name"
+        app:layout_constraintTop_toBottomOf="@+id/create_project_project_name" />
+
+    <Button
+        android:id="@+id/create_layout_confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#17881B"
+        android:fontFamily="@font/copse"
+        android:text="Confirm"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/create_project_project_name"
+        app:layout_constraintTop_toBottomOf="@+id/create_project_project_name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

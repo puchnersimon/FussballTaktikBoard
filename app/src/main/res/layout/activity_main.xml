@@ -21,20 +21,20 @@
         android:id="@+id/button_main_add"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
         android:background="@color/white"
         android:scaleX="3"
         android:scaleY="3"
         android:src="@android:drawable/ic_input_add"
         android:text="Button"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_main_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/textView_main_title" />
 
     <Button
         android:id="@+id/button_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="86dp"
         android:text="test"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
