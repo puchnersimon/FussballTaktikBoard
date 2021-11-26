@@ -77,7 +77,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             style = Paint.Style.STROKE
             strokeJoin = Paint.Join.ROUND
             strokeCap = Paint.Cap.ROUND
-            strokeWidth = 40f
+            strokeWidth = 15f
         }
         return binding.root
     }
@@ -154,12 +154,12 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
 
             //set strength of pencil
             R.id.fragment_draw_pencil -> {
-                paint.strokeWidth = 40f
+                paint.strokeWidth = 15f
             }
 
             //set strength of rubber and color
             R.id.fragment_draw_rubber -> {
-                paint.strokeWidth = 40f
+                paint.strokeWidth = 15f
                 paint.color = Color.WHITE
             }
 
