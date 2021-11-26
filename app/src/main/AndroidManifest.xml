@@ -11,7 +11,7 @@
         android:theme="@style/Theme.Pro_FußballTaktikBoard"
         >
 
-        >
+
         <activity android:name=".ActivityThirdField" />
         <activity android:name=".ActivitySecondField" />
         <activity android:name=".ActivityFirstField" />

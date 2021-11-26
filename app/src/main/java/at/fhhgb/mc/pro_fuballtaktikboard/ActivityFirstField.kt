@@ -14,6 +14,8 @@ class ActivityFirstField : AppCompatActivity() {
         binding = ActivityFirstFieldBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         binding.buttonNextField.setOnClickListener {
             val intentToNextField: Intent = Intent(this, ActivitySecondField::class.java)
             startActivity(intentToNextField)

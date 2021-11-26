@@ -17,7 +17,7 @@ class MainActivity : Activity() {
     lateinit var binding: ActivityMainBinding
     lateinit var recyclerView: RecyclerView
     lateinit var adapter: RecyclerAdapter_Main
-    var ProjectList: ArrayList<String> = ArrayList()
+    var projectList: ArrayList<String> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,7 @@ class MainActivity : Activity() {
             builder.setView(input)
             //set buttons for alert
             builder.setPositiveButton("Ok", DialogInterface.OnClickListener { dialog, which ->
-                ProjectList.add(input.text.toString())
+                projectList.add(input.text.toString())
             } )
             builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which ->
                 dialog.cancel()
@@ -48,7 +48,7 @@ class MainActivity : Activity() {
 
         recyclerView = findViewById(R.id.recycler_view_main)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = RecyclerAdapter_Main(this, ProjectList)
+        adapter = RecyclerAdapter_Main(this, projectList)
         adapter.notifyDataSetChanged()
         recyclerView.adapter = adapter
 
