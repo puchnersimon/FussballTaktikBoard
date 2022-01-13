@@ -77,7 +77,4 @@ public class RecyclerAdapter_Main extends RecyclerView.Adapter<RecyclerAdapter_M
         }
 
     }
-
-
-
 }
