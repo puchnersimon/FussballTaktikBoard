@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.*
 import android.view.View.OnTouchListener
 import android.widget.RelativeLayout
+import androidx.core.graphics.BitmapCompat
 import androidx.core.graphics.scale
 import androidx.fragment.app.Fragment
 import at.fhhgb.mc.pro_fuballtaktikboard.databinding.FragmentDrawBinding
@@ -101,8 +102,8 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     //change surfaceView
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
         surfaceHolder = holder
-
         drawBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        soccerElement = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
     }
 
     //reset/destroy surface when went back or forward
@@ -117,6 +118,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             val x: Float = event.x
             val y: Float = event.y
 
+            //get coordinates for soccerelement
             if (drawLine == false) {
                 drawElement(x, y)
             } else {
@@ -263,7 +265,6 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
 
             R.id.fragment_draw_text -> {
                 print("test")
-
             }
 
         }
@@ -273,10 +274,11 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     }
 
 
-    //draw element into bitmap with x-coordiantes and y-coordinates from onTouch()
+    //draw element into bitmap with x-coordinates and y-coordinates from onTouch()
     private fun drawElement(x: Float, y: Float) {
         var canvas = Canvas(drawBitmap)
         canvas = surfaceHolder.lockCanvas(null)
+        canvas.drawColor(Color.TRANSPARENT)
         canvas.drawBitmap(soccerElement, x-50, y-50, null)
         //listCanvas.add(canvas)
         surfaceHolder.unlockCanvasAndPost(canvas)
@@ -287,9 +289,9 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     //clear canvas and load into surfaceview/holder -> by deleting
     private fun clearCanvas() {
         drawBitmap = Bitmap.createBitmap(drawBitmap.width, drawBitmap.height, Bitmap.Config.ARGB_8888)
-
         var canvas = Canvas(drawBitmap)
         //canvas.drawColor(Color.TRANSPARENT)
+
         canvas = surfaceHolder.lockCanvas(null)
         canvas.drawBitmap(drawBitmap, 0f, 0f, null)
         //canvas.setBitmap(drawBitmap)
@@ -297,6 +299,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
         surfaceHolder.unlockCanvasAndPost(canvas)
         path.reset()
     }
+
 
     //return bitmap to activity
     public fun getBitmap(): Bitmap {
