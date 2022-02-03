@@ -7,20 +7,21 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#7F7F7F">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/fragment_draw_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.8"
-            />
+            app:layout_constraintGuide_percent="0.8" />
 
         <SurfaceView
             android:id="@+id/surfaceView"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:outlineSpotShadowColor="#6A6A6A"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/fragment_draw_guideline"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +29,7 @@
 
         <LinearLayout
             android:id="@+id/fragment_draw_palette"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:background="@drawable/shape_draw_palette"
             android:orientation="vertical"
@@ -134,10 +135,10 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/fragment_draw_shirt"
+                        android:id="@+id/fragment_draw_ladder"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/shirt" />
+                        app:srcCompat="@drawable/ladder" />
 
                     <ImageView
                         android:id="@+id/fragment_draw_littleHat"
@@ -150,6 +151,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/goal" />
+
+                    <ImageView
+                        android:id="@+id/fragment_draw_shirtblue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/shirtblue" />
+
+                    <ImageView
+                        android:id="@+id/fragment_draw_shirtred"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/shirtred" />
+
+                    <ImageView
+                        android:id="@+id/fragment_draw_shirtorange"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/shirtorange" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -175,6 +194,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/flag" />
+
+                    <ImageView
+                        android:id="@+id/fragment_draw_shirtgreen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/shirtgreen" />
+
+                    <ImageView
+                        android:id="@+id/fragment_draw_shirtyellow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/shirtyellow" />
+
+                    <ImageView
+                        android:id="@+id/fragment_draw_shirtviolet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/shirtviolet" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

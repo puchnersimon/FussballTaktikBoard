@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../layout/custom_preview.xml" value="0.20260416666666667" />
         <entry key="app/src/main/res/drawable/corner_bottom.xml" value="0.24453125" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_box_24.xml" value="0.4041666666666667" />
         <entry key="app/src/main/res/drawable/ic_baseline_keyboard_backspace_24.xml" value="0.4041666666666667" />
@@ -12,13 +13,13 @@
         <entry key="app/src/main/res/layout/activity_second_field.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_test_images.xml" value="0.23097826086956522" />
         <entry key="app/src/main/res/layout/activity_third_field.xml" value="0.125" />
-        <entry key="app/src/main/res/layout/create_project.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/fragment_draw.xml" value="0.3242753623188406" />
+        <entry key="app/src/main/res/layout/create_project.xml" value="0.1781196133429823" />
+        <entry key="app/src/main/res/layout/fragment_draw.xml" value="0.25" />
         <entry key="app/src/main/res/layout/top_corner.xml" value="0.1367872807017544" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
