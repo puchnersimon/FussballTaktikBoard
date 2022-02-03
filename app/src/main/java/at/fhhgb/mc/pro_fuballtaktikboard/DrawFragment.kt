@@ -1,6 +1,7 @@
 package at.fhhgb.mc.pro_fuballtaktikboard
 
 import android.content.DialogInterface
+import android.content.res.Resources
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
@@ -31,6 +32,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     //for centering the elements by input-touching
     var centerX: Int = 50
     var centerY: Int = 50
+    private var listSave = mutableListOf<ElementCoordinates>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -356,15 +358,19 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
 
     //draw element into bitmap with x-coordinates and y-coordinates from onTouch()
     private fun drawElement(x: Float, y: Float) {
-        var canvas = Canvas()
-        canvas = surfaceHolder.lockCanvas(null)
-        //canvas.drawColor(Color.TRANSPARENT)
-
         //centerX & centerY for set element in middle of touch
-        canvas.drawBitmap(soccerElement, x-centerX, y-centerY, null)
-        //listCanvas.add(canvas)
+        listSave.add(ElementCoordinates(soccerElement, x-centerX, y-centerY))
+
+        var canvas = Canvas(drawBitmap)
+        canvas = surfaceHolder.lockCanvas()
+
+        //iterate through list to build the actual canvas
+        synchronized(surfaceHolder) {
+            for (i in listSave) {
+                canvas.drawBitmap(i.id, i.x, i.y, null)
+            }
+        }
         surfaceHolder.unlockCanvasAndPost(canvas)
-        path.reset()
     }
 
 
