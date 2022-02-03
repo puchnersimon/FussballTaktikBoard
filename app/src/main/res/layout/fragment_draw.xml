@@ -47,7 +47,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.5"
+                    android:layout_weight="0.4"
                     android:orientation="vertical">
 
                     <ImageView
@@ -85,7 +85,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.5"
+                    android:layout_weight="0.4"
                     android:orientation="vertical">
 
                     <ImageView
@@ -125,7 +125,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5"
+                android:layout_weight="0.4"
+                android:background="#6A6A6A"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -136,37 +137,37 @@
 
                     <ImageView
                         android:id="@+id/fragment_draw_ladder"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/ladder" />
 
                     <ImageView
                         android:id="@+id/fragment_draw_littleHat"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/littlehat" />
 
                     <ImageView
                         android:id="@+id/fragment_draw_goal"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/goal" />
 
                     <ImageView
                         android:id="@+id/fragment_draw_shirtblue"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/shirtblue" />
 
                     <ImageView
                         android:id="@+id/fragment_draw_shirtred"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/shirtred" />
 
                     <ImageView
                         android:id="@+id/fragment_draw_shirtorange"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/shirtorange" />
                 </LinearLayout>
@@ -179,37 +180,37 @@
 
                     <ImageView
                         android:id="@+id/fragment_draw_ball"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/ball" />
 
                     <ImageView
                         android:id="@+id/fragment_draw_circle"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/circle" />
 
                     <ImageView
                         android:id="@+id/fragment_draw_flag"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/flag" />
 
                     <ImageView
                         android:id="@+id/fragment_draw_shirtgreen"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/shirtgreen" />
 
                     <ImageView
                         android:id="@+id/fragment_draw_shirtyellow"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/shirtyellow" />
 
                     <ImageView
                         android:id="@+id/fragment_draw_shirtviolet"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/shirtviolet" />
                 </LinearLayout>
