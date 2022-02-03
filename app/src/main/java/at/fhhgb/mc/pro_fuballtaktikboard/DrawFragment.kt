@@ -5,9 +5,6 @@ import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.*
-import android.view.View.OnTouchListener
-import android.widget.RelativeLayout
-import androidx.core.graphics.scale
 import androidx.fragment.app.Fragment
 import at.fhhgb.mc.pro_fuballtaktikboard.databinding.FragmentDrawBinding
 import kotlinx.coroutines.Dispatchers
@@ -67,7 +64,13 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             fragmentDrawYellow.setOnClickListener(this@DrawFragment)
             fragmentDrawOrange.setOnClickListener(this@DrawFragment)
 
-            fragmentDrawShirt.setOnClickListener(this@DrawFragment)
+            fragmentDrawLadder.setOnClickListener(this@DrawFragment)
+            fragmentDrawShirtblue.setOnClickListener(this@DrawFragment)
+            fragmentDrawShirtred.setOnClickListener(this@DrawFragment)
+            fragmentDrawShirtorange.setOnClickListener(this@DrawFragment)
+            fragmentDrawShirtviolet.setOnClickListener(this@DrawFragment)
+            fragmentDrawShirtgreen.setOnClickListener(this@DrawFragment)
+            fragmentDrawShirtyellow.setOnClickListener(this@DrawFragment)
             fragmentDrawBall.setOnClickListener(this@DrawFragment)
             fragmentDrawLittleHat.setOnClickListener(this@DrawFragment)
             fragmentDrawCircle.setOnClickListener(this@DrawFragment)
@@ -216,8 +219,46 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             }
 
             //settings shirt
-            R.id.fragment_draw_shirt -> {
-                val myDrawable = requireActivity().getDrawable(R.drawable.shirt)
+            R.id.fragment_draw_shirtblue -> {
+                val myDrawable = requireActivity().getDrawable(R.drawable.shirtblue)
+                soccerElement = (myDrawable as BitmapDrawable).bitmap
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 250, 250, false)
+                drawLine = false
+            }
+            R.id.fragment_draw_shirtgreen -> {
+                val myDrawable = requireActivity().getDrawable(R.drawable.shirtgreen)
+                soccerElement = (myDrawable as BitmapDrawable).bitmap
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 250, 250, false)
+                drawLine = false
+            }
+            R.id.fragment_draw_shirtred -> {
+                val myDrawable = requireActivity().getDrawable(R.drawable.shirtred)
+                soccerElement = (myDrawable as BitmapDrawable).bitmap
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 250, 250, false)
+                drawLine = false
+            }
+            R.id.fragment_draw_shirtyellow -> {
+                val myDrawable = requireActivity().getDrawable(R.drawable.shirtyellow)
+                soccerElement = (myDrawable as BitmapDrawable).bitmap
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 250, 250, false)
+                drawLine = false
+            }
+            R.id.fragment_draw_shirtviolet -> {
+                val myDrawable = requireActivity().getDrawable(R.drawable.shirtviolet)
+                soccerElement = (myDrawable as BitmapDrawable).bitmap
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 250, 250, false)
+                drawLine = false
+            }
+            R.id.fragment_draw_shirtorange -> {
+                val myDrawable = requireActivity().getDrawable(R.drawable.shirtorange)
+                soccerElement = (myDrawable as BitmapDrawable).bitmap
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 250, 250, false)
+                drawLine = false
+            }
+
+            // settings ladder
+            R.id.fragment_draw_ladder -> {
+                val myDrawable = requireActivity().getDrawable(R.drawable.ladder)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 250, 250, false)
                 drawLine = false
@@ -289,7 +330,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
         drawBitmap = Bitmap.createBitmap(drawBitmap.width, drawBitmap.height, Bitmap.Config.ARGB_8888)
 
         var canvas = Canvas(drawBitmap)
-        //canvas.drawColor(Color.TRANSPARENT)
+       // canvas.drawColor(Color.TRANSPARENT)
         canvas = surfaceHolder.lockCanvas(null)
         canvas.drawBitmap(drawBitmap, 0f, 0f, null)
         //canvas.setBitmap(drawBitmap)
