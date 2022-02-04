@@ -241,7 +241,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             R.id.fragment_draw_shirtblue -> {
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtblue)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
-                soccerElement = Bitmap.createScaledBitmap(soccerElement, 250, 250, false)
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 120, 120, false)
                 drawLine = false
                 centerX = 125
                 centerY = 125
@@ -249,7 +249,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             R.id.fragment_draw_shirtgreen -> {
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtgreen)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
-                soccerElement = Bitmap.createScaledBitmap(soccerElement, 250, 250, false)
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 120, 120, false)
                 drawLine = false
                 centerX = 125
                 centerY = 125
@@ -257,7 +257,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             R.id.fragment_draw_shirtred -> {
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtred)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
-                soccerElement = Bitmap.createScaledBitmap(soccerElement, 250, 250, false)
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 120, 120, false)
                 drawLine = false
                 centerX = 125
                 centerY = 125
@@ -265,7 +265,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             R.id.fragment_draw_shirtyellow -> {
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtyellow)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
-                soccerElement = Bitmap.createScaledBitmap(soccerElement, 250, 250, false)
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 120, 120, false)
                 drawLine = false
                 centerX = 125
                 centerY = 125
@@ -273,7 +273,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             R.id.fragment_draw_shirtviolet -> {
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtviolet)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
-                soccerElement = Bitmap.createScaledBitmap(soccerElement, 250, 250, false)
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 120, 120, false)
                 drawLine = false
                 centerX = 125
                 centerY = 125
@@ -281,7 +281,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             R.id.fragment_draw_shirtorange -> {
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtorange)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
-                soccerElement = Bitmap.createScaledBitmap(soccerElement, 250, 250, false)
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 120, 120, false)
                 drawLine = false
                 centerX = 125
                 centerY = 125
@@ -291,7 +291,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             R.id.fragment_draw_ladder -> {
                 val myDrawable = requireActivity().getDrawable(R.drawable.ladder)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
-                soccerElement = Bitmap.createScaledBitmap(soccerElement, 150, 150, false)
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 80,80, false)
                 drawLine = false
                 drawLine = false
                 centerX = 80
@@ -302,29 +302,30 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             R.id.fragment_draw_ball -> {
                 val myDrawable = requireActivity().getDrawable(R.drawable.ball)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 40,40, false)
                 drawLine = false
-                centerX = 50
-                centerY = 50
+                centerX = 39
+                centerY = 39
             }
 
             //settings littlehat
             R.id.fragment_draw_littleHat -> {
                 val myDrawable = requireActivity().getDrawable(R.drawable.littlehat)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
-                soccerElement = Bitmap.createScaledBitmap(soccerElement, 120, 120, false)
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 50, 50, false)
                 drawLine = false
-                centerX = 60
-                centerY = 60
+                centerX = 48
+                centerY = 48
             }
 
             //settings circle
             R.id.fragment_draw_circle -> {
                 val myDrawable = requireActivity().getDrawable(R.drawable.circle)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
-                soccerElement = Bitmap.createScaledBitmap(soccerElement, 120, 120, false)
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 50, 50, false)
                 drawLine = false
-                centerX = 60
-                centerY = 65
+                centerX = 48
+                centerY = 48
 
             }
 
@@ -332,20 +333,20 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             R.id.fragment_draw_goal -> {
                 val myDrawable = requireActivity().getDrawable(R.drawable.goal)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
-                soccerElement = Bitmap.createScaledBitmap(soccerElement, 250, 250, false)
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 120, 120, false)
                 drawLine = false
-                centerX = 120
-                centerY = 120
+                centerX = 118
+                centerY = 118
             }
 
             //settings flag
             R.id.fragment_draw_flag -> {
                 val myDrawable = requireActivity().getDrawable(R.drawable.flag)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
-                soccerElement = Bitmap.createScaledBitmap(soccerElement, 200, 200, false)
+                soccerElement = Bitmap.createScaledBitmap(soccerElement, 70, 70, false)
                 drawLine = false
-                centerX = 95
-                centerY = 95
+                centerX = 73
+                centerY = 73
             }
 
             R.id.fragment_draw_text -> {
@@ -362,17 +363,24 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     //draw element into bitmap with x-coordinates and y-coordinates from onTouch()
     private fun drawElement(x: Float, y: Float) {
         //centerX & centerY for set element in middle of touch
-        listSave.add(ElementCoordinates(soccerElement, x-centerX, y-centerY))
+        //listSave.add(ElementCoordinates(soccerElement, x-centerX, y-centerY))
 
         var canvas = Canvas(drawBitmap)
-        canvas = surfaceHolder.lockCanvas()
 
         //iterate through list to build the actual canvas
+        /*
         synchronized(surfaceHolder) {
             for (i in listSave) {
                 canvas.drawBitmap(i.id, i.x, i.y, null)
             }
         }
+
+         */
+
+        canvas.drawBitmap(soccerElement, x - centerX, y-centerY, null)
+
+        canvas = surfaceHolder.lockCanvas()
+        canvas.drawBitmap(drawBitmap, 0f, 0f, null)
         surfaceHolder.unlockCanvasAndPost(canvas)
     }
 
@@ -385,10 +393,9 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
 
         canvas = surfaceHolder.lockCanvas()
         canvas.drawBitmap(drawBitmap, 0f, 0f, null)
-        //canvas.setBitmap(drawBitmap)
         canvas.drawColor(0, PorterDuff.Mode.CLEAR)
+        //canvas.setBitmap(drawBitmap)
         surfaceHolder.unlockCanvasAndPost(canvas)
-        path.reset()
     }
 
 
