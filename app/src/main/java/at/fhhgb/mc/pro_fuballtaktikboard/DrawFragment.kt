@@ -5,6 +5,7 @@ import android.content.res.Resources
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.view.View.OnTouchListener
 import android.widget.RelativeLayout
@@ -26,7 +27,6 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     private lateinit var paint: Paint
     private lateinit var path: Path
     private lateinit var drawBitmap: Bitmap
-    private var listCanvas: MutableList<Canvas> = arrayListOf()
     var drawLine: Boolean = true
     private lateinit var soccerElement: Bitmap
     //for centering the elements by input-touching
@@ -56,7 +56,6 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
         surfaceView.setBackgroundColor(Color.TRANSPARENT)
         surfaceView.setOnTouchListener(this)
 
-        //listCanvas = mutableListOf<Canvas>()
 
         //set fragment clickable
         with(binding) {
@@ -128,10 +127,14 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             val x: Float = event.x
             val y: Float = event.y
 
+            Log.e("event", event.toString())
+
             //get coordinates for soccerelement
             //drawLine set to false if a soccerelement is choosen in palette
             if (drawLine == false) {
-                drawElement(x, y)
+                //if (event.actionMasked == MotionEvent.ACTION_UP) {
+                    drawElement(x, y)
+                //}
             } else {
 
                 when (event.actionMasked) {
@@ -146,7 +149,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
                     }
                 }
 
-                //write path to canvas (from there into surfaceView)
+                //write path to bitmap, then save to canvas (from there into surfaceView)
                 GlobalScope.launch {
                     writePathToCanvas(path)
                 }
@@ -166,7 +169,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             //add/save canvas to list
             //listCanvas.add(canvas)
 
-            canvas = surfaceHolder.lockCanvas(null)
+            canvas = surfaceHolder.lockCanvas()
             canvas.drawBitmap(drawBitmap, 0f, 0f, null)
             surfaceHolder.unlockCanvasAndPost(canvas)
         }
@@ -380,7 +383,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
         var canvas = Canvas(drawBitmap)
         //canvas.drawColor(Color.TRANSPARENT)
 
-        canvas = surfaceHolder.lockCanvas(null)
+        canvas = surfaceHolder.lockCanvas()
         canvas.drawBitmap(drawBitmap, 0f, 0f, null)
         //canvas.setBitmap(drawBitmap)
         canvas.drawColor(0, PorterDuff.Mode.CLEAR)
