@@ -111,7 +111,12 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     //change surfaceView
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
         surfaceHolder = holder
-        drawBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+
+        val myDrawable = requireActivity().getDrawable(R.drawable.fullfield)
+        var backgound = (myDrawable as BitmapDrawable).bitmap
+        drawBitmap = Bitmap.createScaledBitmap(backgound, width, height, false)
+
+
         soccerElement = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
     }
 
@@ -132,9 +137,9 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             //get coordinates for soccerelement
             //drawLine set to false if a soccerelement is choosen in palette
             if (drawLine == false) {
-                //if (event.actionMasked == MotionEvent.ACTION_UP) {
+                if (event.actionMasked == MotionEvent.ACTION_UP) {
                     drawElement(x, y)
-                //}
+                }
             } else {
 
                 when (event.actionMasked) {
@@ -363,7 +368,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     //draw element into bitmap with x-coordinates and y-coordinates from onTouch()
     private fun drawElement(x: Float, y: Float) {
         //centerX & centerY for set element in middle of touch
-        //listSave.add(ElementCoordinates(soccerElement, x-centerX, y-centerY))
+        listSave.add(ElementCoordinates(soccerElement, x-centerX, y-centerY))
 
         var canvas = Canvas(drawBitmap)
 

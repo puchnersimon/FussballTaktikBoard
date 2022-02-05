@@ -7,18 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.tabs.TabLayout;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class RecyclerAdapter_Main extends RecyclerView.Adapter<RecyclerAdapter_Main.ViewHolder> {
+public class RecyclerAdapter_Main extends RecyclerView.Adapter<RecyclerAdapter_Main.ViewHolder2> {
     Context context;
     ArrayList<String> project;
 
@@ -31,15 +28,15 @@ public class RecyclerAdapter_Main extends RecyclerView.Adapter<RecyclerAdapter_M
     @NonNull
     @NotNull
     @Override
-    public RecyclerAdapter_Main.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+    public ViewHolder2 onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.activity_main_recycler_view_cell, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        ViewHolder2 viewHolder2 = new ViewHolder2(view);
+        return viewHolder2;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull RecyclerAdapter_Main.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull ViewHolder2 holder, int position) {
         holder.projectname.setText(project.get(position));
 
         //delete item on list with delete button
@@ -64,12 +61,12 @@ public class RecyclerAdapter_Main extends RecyclerView.Adapter<RecyclerAdapter_M
         return project.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder2 extends RecyclerView.ViewHolder {
         View itemView;
         TextView projectname;
         ImageButton delete;
 
-        public ViewHolder(@NonNull @NotNull View itemView) {
+        public ViewHolder2(@NonNull @NotNull View itemView) {
             super(itemView);
             this.itemView = itemView;
             projectname = itemView.findViewById(R.id.textView_rv_cell_project);
