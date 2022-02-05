@@ -140,6 +140,4 @@ class MainActivity : AppCompatActivity() {
 
 */
         }
-
-
     }
