@@ -91,27 +91,30 @@ class MainActivity : AppCompatActivity() {
             dialog.show()
 
             dialog.findViewById<Button>(R.id.create_layout_confirm_button).setOnClickListener {
+
                 var projectNameTF: EditText =
                     dialog.findViewById<EditText>(R.id.create_project_project_name)
 
-                var projectName: String = projectNameTF.text.toString()
-                projectList.add(projectName)
+                    var projectName: String = projectNameTF.text.toString()
 
-                val project = Project(
-                    id = null,
-                    projectName = projectName,
-                    pathFirstField = "",
-                    pathPenaltyArea = "",
-                    pathFreeArea = ""
-                )
+                if (projectName != "") {
+                    projectList.add(projectName)
 
-                projectViewModel.insert(project)
+                    val project = Project(
+                        id = null,
+                        projectName = projectName,
+                        pathFirstField = "",
+                        pathPenaltyArea = "",
+                        pathFreeArea = ""
+                    )
 
-                dialog.cancel()
+                    projectViewModel.insert(project)
+
+                    dialog.cancel()
+                }
             }
 
             dialog.findViewById<Button>(R.id.create_layout_cancel_button).setOnClickListener {
-
                 dialog.cancel()
             }
 
