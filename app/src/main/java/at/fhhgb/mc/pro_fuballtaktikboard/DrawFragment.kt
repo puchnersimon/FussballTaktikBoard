@@ -323,8 +323,8 @@ class DrawFragment(projectViewModel: ProjectViewModel?, project: Project?, page:
                 project?.let {
                     if (it.hasEdited) {
                         soccerElement = Bitmap.createScaledBitmap(soccerElement, 115, 115, false)
-                        centerX = 78
-                        centerY = 78
+                        centerX = 115
+                        centerY = 115
                     }
                 }
 
@@ -336,9 +336,17 @@ class DrawFragment(projectViewModel: ProjectViewModel?, project: Project?, page:
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtgreen)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 220, 220, false)
-                drawLine = false
                 centerX = 110
                 centerY = 110
+
+                project?.let {
+                    if (it.hasEdited) {
+                        soccerElement = Bitmap.createScaledBitmap(soccerElement, 115, 115, false)
+                        centerX = 115
+                        centerY = 115
+                    }
+                }
+                drawLine = false
             }
             R.id.fragment_draw_shirtred -> {
                 resetColorFragment()
@@ -346,9 +354,17 @@ class DrawFragment(projectViewModel: ProjectViewModel?, project: Project?, page:
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtred)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 220, 220, false)
-                drawLine = false
                 centerX = 110
                 centerY = 110
+
+                project?.let {
+                    if (it.hasEdited) {
+                        soccerElement = Bitmap.createScaledBitmap(soccerElement, 115, 115, false)
+                        centerX = 115
+                        centerY = 115
+                    }
+                }
+                drawLine = false
             }
             R.id.fragment_draw_shirtyellow -> {
                 resetColorFragment()
@@ -356,9 +372,17 @@ class DrawFragment(projectViewModel: ProjectViewModel?, project: Project?, page:
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtyellow)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 220, 220, false)
-                drawLine = false
                 centerX = 110
                 centerY = 110
+
+                project?.let {
+                    if (it.hasEdited) {
+                        soccerElement = Bitmap.createScaledBitmap(soccerElement, 115, 115, false)
+                        centerX = 115
+                        centerY = 115
+                    }
+                }
+                drawLine = false
             }
             R.id.fragment_draw_shirtviolet -> {
                 resetColorFragment()
@@ -366,9 +390,17 @@ class DrawFragment(projectViewModel: ProjectViewModel?, project: Project?, page:
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtviolet)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 220, 220, false)
-                drawLine = false
                 centerX = 110
                 centerY = 110
+
+                project?.let {
+                    if (it.hasEdited) {
+                        soccerElement = Bitmap.createScaledBitmap(soccerElement, 115, 115, false)
+                        centerX = 115
+                        centerY = 115
+                    }
+                }
+                drawLine = false
             }
             R.id.fragment_draw_shirtorange -> {
                 resetColorFragment()
@@ -376,9 +408,17 @@ class DrawFragment(projectViewModel: ProjectViewModel?, project: Project?, page:
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtorange)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 220, 220, false)
-                drawLine = false
                 centerX = 110
                 centerY = 110
+
+                project?.let {
+                    if (it.hasEdited) {
+                        soccerElement = Bitmap.createScaledBitmap(soccerElement, 115, 115, false)
+                        centerX = 115
+                        centerY = 115
+                    }
+                }
+                drawLine = false
             }
 
             // settings ladder
@@ -388,10 +428,17 @@ class DrawFragment(projectViewModel: ProjectViewModel?, project: Project?, page:
                 val myDrawable = requireActivity().getDrawable(R.drawable.ladder)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 130,130, false)
-                drawLine = false
-                drawLine = false
                 centerX = 70
                 centerY = 73
+
+                project?.let {
+                    if (it.hasEdited) {
+                        soccerElement = Bitmap.createScaledBitmap(soccerElement, 60, 60, false)
+                        centerX = 60
+                        centerY = 60
+                    }
+                }
+                drawLine = false
             }
 
             //settings ball
@@ -401,9 +448,17 @@ class DrawFragment(projectViewModel: ProjectViewModel?, project: Project?, page:
                 val myDrawable = requireActivity().getDrawable(R.drawable.ball)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 70,70, false)
+                centerX = 30
+                centerY = 30
+
+                project?.let {
+                    if (it.hasEdited) {
+                        soccerElement = Bitmap.createScaledBitmap(soccerElement, 40, 40, false)
+                        centerX = 40
+                        centerY = 40
+                    }
+                }
                 drawLine = false
-                centerX = 35
-                centerY = 35
             }
 
             //settings littlehat
@@ -413,9 +468,17 @@ class DrawFragment(projectViewModel: ProjectViewModel?, project: Project?, page:
                 val myDrawable = requireActivity().getDrawable(R.drawable.littlehat)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 80, 80, false)
+                centerX = 45
+                centerY = 45
+
+                project?.let {
+                    if (it.hasEdited) {
+                        soccerElement = Bitmap.createScaledBitmap(soccerElement, 40, 40, false)
+                        centerX = 35
+                        centerY = 35
+                    }
+                }
                 drawLine = false
-                centerX = 35
-                centerY = 40
             }
 
             //settings circle
@@ -425,9 +488,17 @@ class DrawFragment(projectViewModel: ProjectViewModel?, project: Project?, page:
                 val myDrawable = requireActivity().getDrawable(R.drawable.circle)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 100, 100, false)
-                drawLine = false
                 centerX = 50
                 centerY = 50
+
+                project?.let {
+                    if (it.hasEdited) {
+                        soccerElement = Bitmap.createScaledBitmap(soccerElement, 50, 50, false)
+                        centerX = 45
+                        centerY = 45
+                    }
+                }
+                drawLine = false
 
             }
 
@@ -438,9 +509,17 @@ class DrawFragment(projectViewModel: ProjectViewModel?, project: Project?, page:
                 val myDrawable = requireActivity().getDrawable(R.drawable.goal)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 220, 220, false)
-                drawLine = false
                 centerX = 110
                 centerY = 110
+
+                project?.let {
+                    if (it.hasEdited) {
+                        soccerElement = Bitmap.createScaledBitmap(soccerElement, 115, 115, false)
+                        centerX = 115
+                        centerY = 115
+                    }
+                }
+                drawLine = false
             }
 
             //settings flag
@@ -450,9 +529,17 @@ class DrawFragment(projectViewModel: ProjectViewModel?, project: Project?, page:
                 val myDrawable = requireActivity().getDrawable(R.drawable.flag)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 130, 130, false)
-                drawLine = false
                 centerX = 65
                 centerY = 65
+
+                project?.let {
+                    if (it.hasEdited) {
+                        soccerElement = Bitmap.createScaledBitmap(soccerElement, 60, 60, false)
+                        centerX = 60
+                        centerY = 60
+                    }
+                }
+                drawLine = false
             }
 
             R.id.fragment_draw_save_to_gallery -> {
