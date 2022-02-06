@@ -45,7 +45,7 @@
         android:id="@+id/recycler_view_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,5 +62,16 @@
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/recycler_view_main"
         app:layout_constraintStart_toStartOf="@+id/recycler_view_main" />
+
+    <Button
+        android:id="@+id/button_main_deleteAllProjects"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="delete All"
+        android:textColor="#3E3E3E"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view_main"
+        app:layout_constraintEnd_toEndOf="@+id/recycler_view_main" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
