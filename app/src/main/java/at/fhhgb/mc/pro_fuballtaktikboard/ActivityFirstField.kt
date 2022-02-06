@@ -25,9 +25,7 @@ class ActivityFirstField : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
         binding.buttonNextField.setOnClickListener {
-            saveField()
             val intentToNextField: Intent = Intent(this, ActivitySecondField::class.java)
             startActivity(intentToNextField)
         }
@@ -101,7 +99,4 @@ class ActivityFirstField : AppCompatActivity() {
             Toast.makeText(applicationContext, "save", Toast.LENGTH_SHORT)
         }
     }
-
-
-
 }

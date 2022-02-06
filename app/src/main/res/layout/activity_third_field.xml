@@ -52,20 +52,5 @@
         app:layout_constraintTop_toBottomOf="@+id/button_back_to_second_field"
         app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
-        android:id="@+id/third_field_background"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:rotation="90"
-        android:scaleX="1.75"
-        android:scaleY="1.65"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fragmentContainer_third_field"
-        app:layout_constraintVertical_bias="0.6"
-        app:srcCompat="@drawable/freearea" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

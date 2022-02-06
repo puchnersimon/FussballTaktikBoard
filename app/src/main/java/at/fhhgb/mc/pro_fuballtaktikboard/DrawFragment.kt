@@ -1,21 +1,26 @@
 package at.fhhgb.mc.pro_fuballtaktikboard
 
+import android.content.ContentValues
 import android.content.DialogInterface
-import android.content.res.Resources
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import android.view.*
-import android.view.View.OnTouchListener
-import android.widget.RelativeLayout
-import androidx.core.graphics.scale
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import at.fhhgb.mc.pro_fuballtaktikboard.databinding.FragmentDrawBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStream
 
 
 class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, View.OnClickListener,
@@ -62,7 +67,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             fragmentDrawPencil.setOnClickListener(this@DrawFragment)
             fragmentDrawDelete.setOnClickListener(this@DrawFragment)
             fragmentDrawRubber.setOnClickListener(this@DrawFragment)
-            fragmentDrawText.setOnClickListener(this@DrawFragment)
+            fragmentDrawSaveToGallery.setOnClickListener(this@DrawFragment)
 
             fragmentDrawBlack.setOnClickListener(this@DrawFragment)
             fragmentDrawWhite.setOnClickListener(this@DrawFragment)
@@ -115,6 +120,10 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
         //set background of field to canvas
         //convert picture to bitmap
         val myDrawable = requireActivity().getDrawable(R.drawable.fullfield)
+
+        //val myDrawable = requireActivity().getDrawable(R.drawable.goalarea)
+        //val myDrawable = requireActivity().getDrawable(R.drawable.freearea)
+
         var background = (myDrawable as BitmapDrawable).bitmap
         drawBitmap = Bitmap.createScaledBitmap(background, width, height, false)
 
@@ -362,8 +371,9 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
                 centerY = 65
             }
 
-            R.id.fragment_draw_text -> {
-                print("test")
+            R.id.fragment_draw_save_to_gallery -> {
+                saveMediaToStorage(drawBitmap)
+
             }
 
         }
@@ -410,6 +420,52 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
         canvas.drawColor(0, PorterDuff.Mode.CLEAR)
         //canvas.setBitmap(drawBitmap)
         surfaceHolder.unlockCanvasAndPost(canvas)
+    }
+
+
+
+    private fun saveMediaToStorage(bitmap: Bitmap) {
+        //Generating a file name
+        val filename = "${System.currentTimeMillis()}.jpg"
+
+        //Output stream
+        var fos: OutputStream? = null
+
+        //For devices running android >= Q
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            //getting the contentResolver
+                context?.contentResolver?.also { resolver ->
+
+                //Content resolver will process the contentvalues
+                val contentValues = ContentValues().apply {
+
+                    //putting file information in content values
+                    put(MediaStore.MediaColumns.DISPLAY_NAME, filename)
+                    put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
+                    put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
+                }
+
+                //Inserting the contentValues to contentResolver and getting the Uri
+                val imageUri: Uri? =
+                    resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+
+                //Opening an outputstream with the Uri that we got
+                fos = imageUri?.let { resolver.openOutputStream(it) }
+            }
+        } else {
+            //These for devices running on android < Q
+            //So I don't think an explanation is needed here
+            val imagesDir =
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+            val image = File(imagesDir, filename)
+            fos = FileOutputStream(image)
+        }
+
+        fos?.use {
+            //Finally writing the bitmap to the output stream that we opened
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, it)
+            Toast.makeText(requireContext(), "Picture saved to Gallery", Toast.LENGTH_LONG).show()
+        }
     }
 
 

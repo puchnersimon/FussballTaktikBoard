@@ -32,5 +32,14 @@
             android:background="#91908E"
             android:src="@drawable/delete_red" />
 
+        <ImageButton
+            android:id="@+id/button_rv_cell_edit_projectname"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="140dp"
+            android:background="#91908E"
+            android:src="@drawable/pencil" />
+
     </androidx.cardview.widget.CardView>
 </LinearLayout>

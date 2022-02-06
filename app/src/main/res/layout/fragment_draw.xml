@@ -95,10 +95,10 @@
                         app:srcCompat="@drawable/trash" />
 
                     <ImageView
-                        android:id="@+id/fragment_draw_text"
+                        android:id="@+id/fragment_draw_save_to_gallery"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/textfield" />
+                        app:srcCompat="@drawable/save" />
 
                     <ImageView
                         android:id="@+id/fragment_draw_white"

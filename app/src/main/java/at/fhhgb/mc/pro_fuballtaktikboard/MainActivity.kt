@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -90,6 +91,8 @@ class MainActivity : AppCompatActivity() {
                     projectViewModel.insert(project)
 
                     dialog.cancel()
+                } else {
+                    Toast.makeText(this, "Set a Projectname!", Toast.LENGTH_LONG).show()
                 }
             }
 
