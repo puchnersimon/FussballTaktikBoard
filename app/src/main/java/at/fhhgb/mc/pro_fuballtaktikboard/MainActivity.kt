@@ -30,12 +30,14 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
 import kotlin.coroutines.coroutineContext
 
+const val FIRST_FIELD = 1
+const val SECOND_FIELD = 2
+const val THIRD_FIELD = 3
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     lateinit var recyclerView: RecyclerView
-    lateinit var adapter: RecyclerAdapter_Main
     var projectList: ArrayList<String> = ArrayList()
     private lateinit var projectViewModelFactory: ProjectViewModelFactory
     private lateinit var projectViewModel: ProjectViewModel
@@ -46,15 +48,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         projectViewModelFactory = ProjectViewModelFactory((application as TaktikBoardApplication).projectRepository)
+        projectViewModel = ViewModelProvider(this, projectViewModelFactory)[ProjectViewModel::class.java]
 
-        val projectAdapter = ProjectAdapter()
+        val projectAdapter = ProjectAdapter(projectViewModel)
         with(binding.recyclerViewMain) {
             setHasFixedSize(true)
             adapter = projectAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
-
-        projectViewModel = ViewModelProvider(this, projectViewModelFactory)[ProjectViewModel::class.java]
 
         lifecycleScope.launchWhenStarted {
             projectViewModel.getProjects().collect {
@@ -85,7 +86,8 @@ class MainActivity : AppCompatActivity() {
                         projectName = projectName,
                         pathFirstField = "",
                         pathPenaltyArea = "",
-                        pathFreeArea = ""
+                        pathFreeArea = "",
+                        hasEdited = false
                     )
 
                     projectViewModel.insert(project)
@@ -99,39 +101,27 @@ class MainActivity : AppCompatActivity() {
             dialog.findViewById<Button>(R.id.create_layout_cancel_button).setOnClickListener {
                 dialog.cancel()
             }
-
-            //update RecyclerView_Main
-            //adapter.notifyDataSetChanged()
-
-            //dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-            //dialog.setCancelable(false)
         }
 
         binding.buttonMainDeleteAllProjects.setOnClickListener {
-            //TODO --> remove all projects from list
-            projectViewModel.deleteProjectTable()
-            projectList.clear()
+
+            GlobalScope.launch {
+                deleteAllProjects()
+            }
+
             Toast.makeText(this, "All projects deleted!", Toast.LENGTH_SHORT).show()
         }
-
-
-        binding.buttonTest.setOnClickListener {
-            val intentNextAc: Intent = Intent(this, ActivityFirstField::class.java)
-            startActivity(intentNextAc)
-        }
-        /*
-
-        recyclerView = findViewById(R.id.recycler_view_main)
-            recyclerView.layoutManager = LinearLayoutManager(this)
-            adapter = RecyclerAdapter_Main(this, projectList)
-            adapter.notifyDataSetChanged()
-            recyclerView.adapter = adapter
-
-
-            //testbutton
-
-
-*/
-        }
-
     }
+
+    /**
+     * delete all projects from room db
+     */
+    private suspend fun deleteAllProjects() {
+        withContext(coroutineContext) {
+            projectViewModel.deleteProjectTable()
+        }
+    }
+
+}
+
+

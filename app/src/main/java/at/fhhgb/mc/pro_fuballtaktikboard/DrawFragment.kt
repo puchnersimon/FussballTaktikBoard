@@ -12,6 +12,8 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import at.fhhgb.mc.pro_fuballtaktikboard.databinding.FragmentDrawBinding
+import at.fhhgb.mc.pro_fuballtaktikboard.db.ProjectViewModel
+import at.fhhgb.mc.pro_fuballtaktikboard.models.Project
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -20,9 +22,13 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
 import java.util.*
+import android.graphics.Bitmap
 
 
-class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, View.OnClickListener,
+
+
+
+class DrawFragment(projectViewModel: ProjectViewModel?, project: Project?, page: Int?, background: Bitmap?) : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, View.OnClickListener,
     DialogInterface.OnClickListener {
 
     private lateinit var binding: FragmentDrawBinding
@@ -31,11 +37,17 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     private lateinit var paint: Paint
     private lateinit var path: Path
     private lateinit var drawBitmap: Bitmap
-    var drawLine: Boolean = true
     private lateinit var soccerElement: Bitmap
+    private var project = project
+    private var page = page
+    private var projectViewModel = projectViewModel
+    private var background = background
+
     //for centering the elements by input-touching
     var centerX: Int = 50
     var centerY: Int = 50
+
+    var drawLine: Boolean = true
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,15 +129,27 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
         surfaceHolder = holder
 
-        //set background of field to canvas
-        //convert picture to bitmap
-        val myDrawable = requireActivity().getDrawable(R.drawable.fullfield)
+        val myDrawable = when(page) {
+            FIRST_FIELD -> {
+                requireActivity().getDrawable(R.drawable.fullfield)
+            }
+            SECOND_FIELD -> {
+                requireActivity().getDrawable(R.drawable.goalarea)
+            }
+            else -> {
+                requireActivity().getDrawable(R.drawable.freearea)
+            }
+        }
 
-        //val myDrawable = requireActivity().getDrawable(R.drawable.goalarea)
-        //val myDrawable = requireActivity().getDrawable(R.drawable.freearea)
+        var back = (myDrawable as BitmapDrawable).bitmap
 
-        var background = (myDrawable as BitmapDrawable).bitmap
-        drawBitmap = Bitmap.createScaledBitmap(background, width, height, false)
+        background?.let {
+            back = it
+        }
+
+        val mutableBitmap: Bitmap = back.copy(Bitmap.Config.ARGB_8888, true)
+
+        drawBitmap = Bitmap.createScaledBitmap(mutableBitmap, width, height, false)
 
         //load converted bitmap into canvas as background
         var canvas = Canvas(drawBitmap)
@@ -149,7 +173,6 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             val x: Float = event.x
             val y: Float = event.y
 
-            Log.e("event", event.toString())
 
             //get coordinates for soccerelement
             //drawLine set to false if a soccerelement is choosen in palette
@@ -292,10 +315,20 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
                 binding.fragmentDrawShirtblue.setBackgroundColor(Color.DKGRAY)
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtblue)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
+
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 220, 220, false)
-                drawLine = false
                 centerX = 110
                 centerY = 110
+
+                project?.let {
+                    if (it.hasEdited) {
+                        soccerElement = Bitmap.createScaledBitmap(soccerElement, 115, 115, false)
+                        centerX = 78
+                        centerY = 78
+                    }
+                }
+
+                drawLine = false
             }
             R.id.fragment_draw_shirtgreen -> {
                 resetColorFragment()
@@ -485,62 +518,88 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     //clear canvas and load into surfaceview/holder -> by deleting
     private fun clearCanvas() {
 
-        val myDrawable = requireActivity().getDrawable(R.drawable.fullfield)
+        val myDrawable = when(page) {
+            FIRST_FIELD -> {
+                requireActivity().getDrawable(R.drawable.fullfield)
+            }
+            SECOND_FIELD -> {
+                requireActivity().getDrawable(R.drawable.goalarea)
+            }
+            else -> {
+                requireActivity().getDrawable(R.drawable.freearea)
+            }
+        }
 
-        //val myDrawable = requireActivity().getDrawable(R.drawable.goalarea)
-        //val myDrawable = requireActivity().getDrawable(R.drawable.freearea)
+        val back = (myDrawable as BitmapDrawable).bitmap
 
-        var background = (myDrawable as BitmapDrawable).bitmap
-        drawBitmap = Bitmap.createScaledBitmap(background, drawBitmap.width, drawBitmap.height, false)
+        val mutableBitmap: Bitmap = back.copy(Bitmap.Config.ARGB_8888, true)
+
+        drawBitmap = Bitmap.createScaledBitmap(mutableBitmap, drawBitmap.width, drawBitmap.height, false)
 
         var canvas = Canvas(drawBitmap)
         canvas = surfaceHolder.lockCanvas()
         canvas.drawBitmap(drawBitmap, 0f, 0f, null)
         surfaceHolder.unlockCanvasAndPost(canvas)
+
+        soccerElement = Bitmap.createBitmap(drawBitmap.width, drawBitmap.height, Bitmap.Config.ARGB_8888)
+
+        project?.hasEdited = false
     }
 
     //convert bitmap to picture and store into gallery
     private fun saveMediaToStorage(bitmap: Bitmap) {
         //Generating a file name
-        val filename = "${System.currentTimeMillis()}.jpg"
+        val filename = "${project?.projectName + "_" + page}.jpg"
 
         //Output stream
         var fos: OutputStream? = null
 
         //For devices running android >= Q
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            //getting the contentResolver
-                context?.contentResolver?.also { resolver ->
+        //getting the contentResolver
+        context?.contentResolver?.also { resolver ->
 
-                //Content resolver will process the contentvalues
-                val contentValues = ContentValues().apply {
+        //Content resolver will process the contentvalues
+        val contentValues = ContentValues().apply {
 
-                    //putting file information in content values
-                    put(MediaStore.MediaColumns.DISPLAY_NAME, filename)
-                    put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
-                    put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
+            //putting file information in content values
+            put(MediaStore.MediaColumns.DISPLAY_NAME, filename)
+            put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
+            put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
+        }
+
+        //Inserting the contentValues to contentResolver and getting the Uri
+        val imageUri: Uri? =
+            resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+
+        project?.let {
+            it.hasEdited = true
+
+            when(page) {
+                FIRST_FIELD -> {
+                    it.pathFirstField = imageUri.toString()
                 }
-
-                //Inserting the contentValues to contentResolver and getting the Uri
-                val imageUri: Uri? =
-                    resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
-
-                //Opening an outputstream with the Uri that we got
-                fos = imageUri?.let { resolver.openOutputStream(it) }
+                SECOND_FIELD -> {
+                    it.pathPenaltyArea = imageUri.toString()
+                }
+                THIRD_FIELD -> {
+                    it.pathFreeArea = imageUri.toString()
+                }
             }
-        } else {
-            //These for devices running on android < Q
-            //So I don't think an explanation is needed here
-            val imagesDir =
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-            val image = File(imagesDir, filename)
-            fos = FileOutputStream(image)
+
+            GlobalScope.launch {
+                projectViewModel?.update(it)
+            }
+        }
+
+            //Opening an outputstream with the Uri that we got
+            fos = imageUri?.let { resolver.openOutputStream(it) }
         }
 
         fos?.use {
             //Finally writing the bitmap to the output stream that we opened
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, it)
             Toast.makeText(requireContext(), "Picture saved to Gallery", Toast.LENGTH_LONG).show()
+
         }
     }
 

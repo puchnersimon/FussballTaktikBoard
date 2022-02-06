@@ -1,9 +1,6 @@
 package at.fhhgb.mc.pro_fuballtaktikboard.db
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import at.fhhgb.mc.pro_fuballtaktikboard.models.Project
 import kotlinx.coroutines.flow.Flow
 
@@ -17,6 +14,9 @@ interface ProjectDao {
 
     @Insert
     fun insert(project: Project)
+
+    @Update
+    fun update(project: Project)
 
     @Delete
     fun delete(project: Project)

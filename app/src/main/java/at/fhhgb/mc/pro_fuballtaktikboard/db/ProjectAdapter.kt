@@ -1,6 +1,8 @@
 package at.fhhgb.mc.pro_fuballtaktikboard.db
 
 import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +11,17 @@ import android.widget.*
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import at.fhhgb.mc.pro_fuballtaktikboard.ActivityFirstField
 import at.fhhgb.mc.pro_fuballtaktikboard.R
 import at.fhhgb.mc.pro_fuballtaktikboard.models.Project
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class ProjectAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ProjectAdapter(projectViewModel: ProjectViewModel) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    private var projectViewModel = projectViewModel
     private var listOfProjects = mutableListOf<Project>()
+    private lateinit var context : Context
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         var projectName: TextView = view.findViewById(R.id.textView_rv_cell_project)
@@ -31,6 +38,7 @@ class ProjectAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.activity_main_recycler_view_cell, parent, false)
 
+        context = parent.context
         return ViewHolder(view)
     }
 
@@ -42,14 +50,25 @@ class ProjectAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         projectHolder.projectName.text = project.projectName
 
 
+        // delete
         projectHolder.delete.setOnClickListener {
-            //TODO --> Delete project from db and recyclerview
-            listOfProjects.removeAt(position)
-            notifyDataSetChanged()
+            GlobalScope.launch {
+                projectViewModel.delete(project)
+            }
         }
 
+        // edit
         projectHolder.edit.setOnClickListener {
             //TODO --> edit projectname
+        }
+
+        // edit project
+        projectHolder.itemView.setOnClickListener {
+            context.let {
+                val intent = Intent(it, ActivityFirstField::class.java)
+                intent.putExtra("PROJECT_ID", project.id)
+                context.startActivity(intent)
+            }
         }
 
     }

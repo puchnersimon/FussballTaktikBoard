@@ -13,6 +13,14 @@ class ProjectRepository(private val projectDao: ProjectDao) {
         return projectDao.getAllProjects()
     }
 
+    fun getProject(id: Int): Project {
+        return projectDao.getProject(id)
+    }
+
+    fun update(project: Project) {
+        projectDao.update(project)
+    }
+
     fun delete(project: Project) {
         projectDao.delete(project)
     }

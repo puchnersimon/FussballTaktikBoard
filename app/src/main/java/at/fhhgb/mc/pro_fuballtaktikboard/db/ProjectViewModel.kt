@@ -7,6 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.processNextEventInCurrentThread
 
 class ProjectViewModel(private val repository: ProjectRepository) : ViewModel() {
 
@@ -22,6 +23,14 @@ class ProjectViewModel(private val repository: ProjectRepository) : ViewModel() 
      */
     fun getProjects(): Flow<MutableList<Project>> {
         return repository.getProjects()
+    }
+
+    fun getProject(id: Int): Project {
+        return repository.getProject(id)
+    }
+
+    fun update(project: Project) = viewModelScope.launch(Dispatchers.IO) {
+        repository.update(project)
     }
 
     fun delete(project: Project) = viewModelScope.launch(Dispatchers.IO) {

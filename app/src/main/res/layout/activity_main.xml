@@ -33,14 +33,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView_main_title" />
 
-    <Button
-        android:id="@+id/button_test"
-        android:layout_width="140dp"
-        android:layout_height="86dp"
-        android:text="test"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_main"
         android:layout_width="match_parent"
