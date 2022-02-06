@@ -37,7 +37,6 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     //for centering the elements by input-touching
     var centerX: Int = 50
     var centerY: Int = 50
-    private var listSave = mutableListOf<ElementCoordinates>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -189,9 +188,6 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             var canvas = Canvas(drawBitmap)
 
             canvas.drawPath(path, paint)
-
-            //add/save canvas to list
-            //listCanvas.add(canvas)
 
             canvas = surfaceHolder.lockCanvas()
             canvas.drawBitmap(drawBitmap, 0f, 0f, null)
@@ -465,20 +461,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
 
     //draw element into bitmap with x-coordinates and y-coordinates from onTouch()
     private fun drawElement(x: Float, y: Float) {
-        //save elements in list for reconstruct
-        //listSave.add(ElementCoordinates(soccerElement, x-centerX, y-centerY))
-
         var canvas = Canvas(drawBitmap)
-
-        //iterate through list to build the actual canvas
-        /*
-        synchronized(surfaceHolder) {
-            for (i in listSave) {
-                canvas.drawBitmap(i.id, i.x, i.y, null)
-            }
-        }
-
-         */
 
         //centerX & centerY for centering the element on coodinations from onTouch
         canvas.drawBitmap(soccerElement, x - centerX, y-centerY, null)
@@ -505,7 +488,6 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
         canvas.drawBitmap(drawBitmap, 0f, 0f, null)
         surfaceHolder.unlockCanvasAndPost(canvas)
     }
-
 
 
     private fun saveMediaToStorage(bitmap: Bitmap) {
