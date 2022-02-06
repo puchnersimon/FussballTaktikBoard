@@ -9,11 +9,15 @@ class ProjectRepository(private val projectDao: ProjectDao) {
         projectDao.insert(project)
     }
 
-    fun getProjects(): Flow<List<Project>> {
+    fun getProjects(): Flow<MutableList<Project>> {
         return projectDao.getAllProjects()
     }
 
     fun delete(project: Project) {
         projectDao.delete(project)
+    }
+
+    fun deleteProjectTable() {
+        projectDao.deleteProjectTable()
     }
 }

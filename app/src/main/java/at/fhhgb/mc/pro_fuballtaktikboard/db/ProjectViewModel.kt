@@ -20,13 +20,19 @@ class ProjectViewModel(private val repository: ProjectRepository) : ViewModel() 
     /**
      * returns a LivaData list of the tiles
      */
-    fun getProjects(): Flow<List<Project>> {
+    fun getProjects(): Flow<MutableList<Project>> {
         return repository.getProjects()
     }
 
     fun delete(project: Project) = viewModelScope.launch(Dispatchers.IO) {
         repository.delete(project)
     }
+
+    fun deleteProjectTable() {
+        repository.deleteProjectTable()
+    }
+
+
 }
 
 class ProjectViewModelFactory(private val repository: ProjectRepository) : ViewModelProvider.Factory {

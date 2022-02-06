@@ -107,7 +107,12 @@ class MainActivity : AppCompatActivity() {
             //dialog.setCancelable(false)
         }
 
-
+        binding.buttonMainDeleteAllProjects.setOnClickListener {
+            //TODO --> remove all projects from list
+            projectViewModel.deleteProjectTable()
+            projectList.clear()
+            Toast.makeText(this, "All projects deleted!", Toast.LENGTH_SHORT).show()
+        }
 
 
         binding.buttonTest.setOnClickListener {
@@ -128,4 +133,5 @@ class MainActivity : AppCompatActivity() {
 
 */
         }
+
     }

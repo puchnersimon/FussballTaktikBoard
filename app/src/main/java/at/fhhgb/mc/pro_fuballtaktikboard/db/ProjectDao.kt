@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ProjectDao {
     @Query("select * from project order by id asc")
-    fun getAllProjects(): Flow<List<Project>>
+    fun getAllProjects(): Flow<MutableList<Project>>
 
     @Query("select * from project where id = :id")
     fun getProject(id: Int): Project

@@ -1,19 +1,20 @@
 package at.fhhgb.mc.pro_fuballtaktikboard.db
 
+import android.app.AlertDialog
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import at.fhhgb.mc.pro_fuballtaktikboard.R
 import at.fhhgb.mc.pro_fuballtaktikboard.models.Project
 
 class ProjectAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var listOfProjects = emptyList<Project>()
+    private var listOfProjects = mutableListOf<Project>()
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         var projectName: TextView = view.findViewById(R.id.textView_rv_cell_project)
@@ -21,7 +22,7 @@ class ProjectAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         var edit: ImageButton = view.findViewById(R.id.button_rv_cell_edit_projectname)
     }
 
-    fun setProjects(listOfProjects: List<Project>) {
+    fun setProjects(listOfProjects: MutableList<Project>) {
         this.listOfProjects = listOfProjects
         notifyDataSetChanged()
     }
@@ -41,12 +42,16 @@ class ProjectAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         projectHolder.projectName.text = project.projectName
 
 
-        //TODO --> Delete project from db and recyclerview
-        //TODO --> edit projectname
-
-        holder.delete.setOnClickListener {
-            println("test delete")
+        projectHolder.delete.setOnClickListener {
+            //TODO --> Delete project from db and recyclerview
+            listOfProjects.removeAt(position)
+            notifyDataSetChanged()
         }
+
+        projectHolder.edit.setOnClickListener {
+            //TODO --> edit projectname
+        }
+
     }
 
     override fun getItemCount(): Int {

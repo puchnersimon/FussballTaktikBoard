@@ -26,6 +26,7 @@ class ActivityFirstField : AppCompatActivity() {
 
 
         binding.buttonNextField.setOnClickListener {
+            saveField()
             val intentToNextField: Intent = Intent(this, ActivitySecondField::class.java)
             startActivity(intentToNextField)
         }
