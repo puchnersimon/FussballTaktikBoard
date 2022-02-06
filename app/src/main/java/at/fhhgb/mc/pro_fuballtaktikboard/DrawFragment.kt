@@ -5,9 +5,7 @@ import android.content.DialogInterface
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
-import android.os.Build
-import android.os.Bundle
-import android.os.Environment
+import android.os.*
 import android.provider.MediaStore
 import android.util.Log
 import android.view.*
@@ -21,6 +19,7 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
+import java.util.*
 
 
 class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, View.OnClickListener,
@@ -206,7 +205,12 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
                 resetColorFragment()
                 binding.fragmentDrawDelete.setBackgroundColor(Color.DKGRAY)
                 clearCanvas()
-                resetColorFragment()
+
+                //wait 300 milisec to change color of fragment
+                val handler = Handler(Looper.getMainLooper())
+                handler.postDelayed({
+                    resetColorFragment()
+                }, 300)
             }
 
             //set strength of pencil
@@ -422,7 +426,12 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
                 resetColorFragment()
                 binding.fragmentDrawSaveToGallery.setBackgroundColor(Color.DKGRAY)
                 saveMediaToStorage(drawBitmap)
-                resetColorFragment()
+
+                //wait 300 milisec to change color of fragment
+                val handler = Handler(Looper.getMainLooper())
+                handler.postDelayed({
+                    resetColorFragment()
+                }, 300)
             }
 
         }
@@ -432,6 +441,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     }
 
 
+    //reset backgroundcolors of fragments
     private fun resetColorFragment() {
         binding.fragmentDrawPencil.setBackgroundColor(Color.parseColor("#91908E"))
         binding.fragmentDrawDelete.setBackgroundColor(Color.parseColor("#91908E"))
@@ -489,7 +499,7 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
         surfaceHolder.unlockCanvasAndPost(canvas)
     }
 
-
+    //convert bitmap to picture and store into gallery
     private fun saveMediaToStorage(bitmap: Bitmap) {
         //Generating a file name
         val filename = "${System.currentTimeMillis()}.jpg"
