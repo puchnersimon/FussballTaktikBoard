@@ -10,7 +10,7 @@
         android:angle="45"
         android:endColor="#91908E"
         android:gradientRadius="10dp"
-        android:startColor="#706D6D"
+        android:startColor="#91908E"
         android:type="linear" />
 
     <size

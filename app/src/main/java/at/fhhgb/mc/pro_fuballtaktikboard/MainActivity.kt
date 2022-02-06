@@ -107,6 +107,9 @@ class MainActivity : AppCompatActivity() {
             //dialog.setCancelable(false)
         }
 
+
+
+
         binding.buttonTest.setOnClickListener {
             val intentNextAc: Intent = Intent(this, ActivityFirstField::class.java)
             startActivity(intentNextAc)

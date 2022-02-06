@@ -101,6 +101,8 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             strokeCap = Paint.Cap.ROUND
             strokeWidth = 15f
         }
+        binding.fragmentDrawBlack.setBackgroundColor(Color.DKGRAY)
+        binding.fragmentDrawPencil.setBackgroundColor(Color.DKGRAY)
         return binding.root
     }
 
@@ -205,17 +207,24 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
 
             //delete -> overload canvas
             R.id.fragment_draw_delete -> {
+                resetColorFragment()
+                binding.fragmentDrawDelete.setBackgroundColor(Color.DKGRAY)
                 clearCanvas()
+                resetColorFragment()
             }
 
             //set strength of pencil
             R.id.fragment_draw_pencil -> {
+                resetColorFragment()
+                binding.fragmentDrawPencil.setBackgroundColor(Color.DKGRAY)
                 paint.strokeWidth = 15f
                 drawLine = true
             }
 
             //set strength of rubber and color
             R.id.fragment_draw_rubber -> {
+                resetColorFragment()
+                binding.fragmentDrawRubber.setBackgroundColor(Color.DKGRAY)
                 paint.strokeWidth = 40f
                 paint.color = Color.parseColor("#01a243")
                 drawLine = true
@@ -223,44 +232,64 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
 
             //get color for color fragments
             R.id.fragment_draw_black -> {
+                resetColorFragment()
+                binding.fragmentDrawBlack.setBackgroundColor(Color.DKGRAY)
+                binding.fragmentDrawPencil.setBackgroundColor(Color.DKGRAY)
                 paint.strokeWidth = 15f
                 paint.color = Color.BLACK
                 drawLine = true
             }
 
             R.id.fragment_draw_white -> {
+                resetColorFragment()
+                binding.fragmentDrawWhite.setBackgroundColor(Color.DKGRAY)
+                binding.fragmentDrawPencil.setBackgroundColor(Color.DKGRAY)
                 paint.strokeWidth = 15f
                 paint.color = Color.WHITE
                 drawLine = true
             }
 
             R.id.fragment_draw_red -> {
+                resetColorFragment()
+                binding.fragmentDrawRed.setBackgroundColor(Color.DKGRAY)
+                binding.fragmentDrawPencil.setBackgroundColor(Color.DKGRAY)
                 paint.strokeWidth = 15f
                 paint.color = Color.RED
                 drawLine = true
             }
 
             R.id.fragment_draw_blue -> {
+                resetColorFragment()
+                binding.fragmentDrawBlue.setBackgroundColor(Color.DKGRAY)
+                binding.fragmentDrawPencil.setBackgroundColor(Color.DKGRAY)
                 paint.strokeWidth = 15f
                 paint.color = Color.BLUE
                 drawLine = true
             }
 
             R.id.fragment_draw_yellow -> {
+                resetColorFragment()
+                binding.fragmentDrawYellow.setBackgroundColor(Color.DKGRAY)
+                binding.fragmentDrawPencil.setBackgroundColor(Color.DKGRAY)
                 paint.strokeWidth = 15f
                 paint.color = Color.YELLOW
                 drawLine = true
             }
 
             R.id.fragment_draw_orange -> {
+                resetColorFragment()
+                binding.fragmentDrawOrange.setBackgroundColor(Color.DKGRAY)
+                binding.fragmentDrawPencil.setBackgroundColor(Color.DKGRAY)
                 paint.strokeWidth = 15f
-                //used RGB-Code for color "orange"
+                //used hex-Code for color "orange"
                 paint.setColor(Color.parseColor("#FFA500"))
                 drawLine = true
             }
 
             //settings shirt
             R.id.fragment_draw_shirtblue -> {
+                resetColorFragment()
+                binding.fragmentDrawShirtblue.setBackgroundColor(Color.DKGRAY)
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtblue)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 220, 220, false)
@@ -269,6 +298,8 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
                 centerY = 110
             }
             R.id.fragment_draw_shirtgreen -> {
+                resetColorFragment()
+                binding.fragmentDrawShirtgreen.setBackgroundColor(Color.DKGRAY)
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtgreen)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 220, 220, false)
@@ -277,6 +308,8 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
                 centerY = 110
             }
             R.id.fragment_draw_shirtred -> {
+                resetColorFragment()
+                binding.fragmentDrawShirtred.setBackgroundColor(Color.DKGRAY)
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtred)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 220, 220, false)
@@ -285,6 +318,8 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
                 centerY = 110
             }
             R.id.fragment_draw_shirtyellow -> {
+                resetColorFragment()
+                binding.fragmentDrawShirtyellow.setBackgroundColor(Color.DKGRAY)
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtyellow)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 220, 220, false)
@@ -293,6 +328,8 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
                 centerY = 110
             }
             R.id.fragment_draw_shirtviolet -> {
+                resetColorFragment()
+                binding.fragmentDrawShirtviolet.setBackgroundColor(Color.DKGRAY)
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtviolet)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 220, 220, false)
@@ -301,6 +338,8 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
                 centerY = 110
             }
             R.id.fragment_draw_shirtorange -> {
+                resetColorFragment()
+                binding.fragmentDrawShirtorange.setBackgroundColor(Color.DKGRAY)
                 val myDrawable = requireActivity().getDrawable(R.drawable.shirtorange)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 220, 220, false)
@@ -311,6 +350,8 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
 
             // settings ladder
             R.id.fragment_draw_ladder -> {
+                resetColorFragment()
+                binding.fragmentDrawLadder.setBackgroundColor(Color.DKGRAY)
                 val myDrawable = requireActivity().getDrawable(R.drawable.ladder)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 130,130, false)
@@ -322,6 +363,8 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
 
             //settings ball
             R.id.fragment_draw_ball -> {
+                resetColorFragment()
+                binding.fragmentDrawBall.setBackgroundColor(Color.DKGRAY)
                 val myDrawable = requireActivity().getDrawable(R.drawable.ball)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 70,70, false)
@@ -332,6 +375,8 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
 
             //settings littlehat
             R.id.fragment_draw_littleHat -> {
+                resetColorFragment()
+                binding.fragmentDrawLittleHat.setBackgroundColor(Color.DKGRAY)
                 val myDrawable = requireActivity().getDrawable(R.drawable.littlehat)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 80, 80, false)
@@ -342,6 +387,8 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
 
             //settings circle
             R.id.fragment_draw_circle -> {
+                resetColorFragment()
+                binding.fragmentDrawCircle.setBackgroundColor(Color.DKGRAY)
                 val myDrawable = requireActivity().getDrawable(R.drawable.circle)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 100, 100, false)
@@ -353,6 +400,8 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
 
             //settings goal
             R.id.fragment_draw_goal -> {
+                resetColorFragment()
+                binding.fragmentDrawGoal.setBackgroundColor(Color.DKGRAY)
                 val myDrawable = requireActivity().getDrawable(R.drawable.goal)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 220, 220, false)
@@ -363,6 +412,8 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
 
             //settings flag
             R.id.fragment_draw_flag -> {
+                resetColorFragment()
+                binding.fragmentDrawFlag.setBackgroundColor(Color.DKGRAY)
                 val myDrawable = requireActivity().getDrawable(R.drawable.flag)
                 soccerElement = (myDrawable as BitmapDrawable).bitmap
                 soccerElement = Bitmap.createScaledBitmap(soccerElement, 130, 130, false)
@@ -372,14 +423,43 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
             }
 
             R.id.fragment_draw_save_to_gallery -> {
+                resetColorFragment()
+                binding.fragmentDrawSaveToGallery.setBackgroundColor(Color.DKGRAY)
                 saveMediaToStorage(drawBitmap)
-
+                resetColorFragment()
             }
 
         }
         if (this::path.isInitialized) {
             path.reset()
         }
+    }
+
+
+    private fun resetColorFragment() {
+        binding.fragmentDrawPencil.setBackgroundColor(Color.parseColor("#91908E"))
+        binding.fragmentDrawDelete.setBackgroundColor(Color.parseColor("#91908E"))
+        binding.fragmentDrawRubber.setBackgroundColor(Color.parseColor("#91908E"))
+        binding.fragmentDrawSaveToGallery.setBackgroundColor(Color.parseColor("#91908E"))
+        binding.fragmentDrawBlack.setBackgroundColor(Color.parseColor("#91908E"))
+        binding.fragmentDrawWhite.setBackgroundColor(Color.parseColor("#91908E"))
+        binding.fragmentDrawRed.setBackgroundColor(Color.parseColor("#91908E"))
+        binding.fragmentDrawBlue.setBackgroundColor(Color.parseColor("#91908E"))
+        binding.fragmentDrawYellow.setBackgroundColor(Color.parseColor("#91908E"))
+        binding.fragmentDrawOrange.setBackgroundColor(Color.parseColor("#91908E"))
+
+        binding.fragmentDrawLadder.setBackgroundColor(Color.parseColor("#6A6A6A"))
+        binding.fragmentDrawBall.setBackgroundColor(Color.parseColor("#6A6A6A"))
+        binding.fragmentDrawLittleHat.setBackgroundColor(Color.parseColor("#6A6A6A"))
+        binding.fragmentDrawCircle.setBackgroundColor(Color.parseColor("#6A6A6A"))
+        binding.fragmentDrawGoal.setBackgroundColor(Color.parseColor("#6A6A6A"))
+        binding.fragmentDrawFlag.setBackgroundColor(Color.parseColor("#6A6A6A"))
+        binding.fragmentDrawShirtblue.setBackgroundColor(Color.parseColor("#6A6A6A"))
+        binding.fragmentDrawShirtgreen.setBackgroundColor(Color.parseColor("#6A6A6A"))
+        binding.fragmentDrawShirtred.setBackgroundColor(Color.parseColor("#6A6A6A"))
+        binding.fragmentDrawShirtyellow.setBackgroundColor(Color.parseColor("#6A6A6A"))
+        binding.fragmentDrawShirtorange.setBackgroundColor(Color.parseColor("#6A6A6A"))
+        binding.fragmentDrawShirtviolet.setBackgroundColor(Color.parseColor("#6A6A6A"))
     }
 
 

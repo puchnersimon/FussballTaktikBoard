@@ -1,10 +1,12 @@
 package at.fhhgb.mc.pro_fuballtaktikboard.db
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import at.fhhgb.mc.pro_fuballtaktikboard.R
 import at.fhhgb.mc.pro_fuballtaktikboard.models.Project
@@ -39,6 +41,12 @@ class ProjectAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         projectHolder.projectName.text = project.projectName
 
 
+        //TODO --> Delete project from db and recyclerview
+        //TODO --> edit projectname
+
+        holder.delete.setOnClickListener {
+            println("test delete")
+        }
     }
 
     override fun getItemCount(): Int {
