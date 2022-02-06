@@ -491,14 +491,18 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
 
     //clear canvas and load into surfaceview/holder -> by deleting
     private fun clearCanvas() {
-        drawBitmap = Bitmap.createBitmap(drawBitmap.width, drawBitmap.height, Bitmap.Config.ARGB_8888)
-        var canvas = Canvas(drawBitmap)
-        //canvas.drawColor(Color.TRANSPARENT)
 
+        val myDrawable = requireActivity().getDrawable(R.drawable.fullfield)
+
+        //val myDrawable = requireActivity().getDrawable(R.drawable.goalarea)
+        //val myDrawable = requireActivity().getDrawable(R.drawable.freearea)
+
+        var background = (myDrawable as BitmapDrawable).bitmap
+        drawBitmap = Bitmap.createScaledBitmap(background, drawBitmap.width, drawBitmap.height, false)
+
+        var canvas = Canvas(drawBitmap)
         canvas = surfaceHolder.lockCanvas()
         canvas.drawBitmap(drawBitmap, 0f, 0f, null)
-        canvas.drawColor(0, PorterDuff.Mode.CLEAR)
-        //canvas.setBitmap(drawBitmap)
         surfaceHolder.unlockCanvasAndPost(canvas)
     }
 
