@@ -23,6 +23,10 @@ class ProjectViewModel(private val repository: ProjectRepository) : ViewModel() 
     fun getProjects(): Flow<List<Project>> {
         return repository.getProjects()
     }
+
+    fun delete(project: Project) = viewModelScope.launch(Dispatchers.IO) {
+        repository.delete(project)
+    }
 }
 
 class ProjectViewModelFactory(private val repository: ProjectRepository) : ViewModelProvider.Factory {

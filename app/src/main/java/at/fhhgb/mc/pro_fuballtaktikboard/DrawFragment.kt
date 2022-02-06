@@ -112,11 +112,19 @@ class DrawFragment : Fragment(), SurfaceHolder.Callback, View.OnTouchListener, V
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
         surfaceHolder = holder
 
+        //set background of field to canvas
+        //convert picture to bitmap
         val myDrawable = requireActivity().getDrawable(R.drawable.fullfield)
-        var backgound = (myDrawable as BitmapDrawable).bitmap
-        drawBitmap = Bitmap.createScaledBitmap(backgound, width, height, false)
+        var background = (myDrawable as BitmapDrawable).bitmap
+        drawBitmap = Bitmap.createScaledBitmap(background, width, height, false)
 
+        //load converted bitmap into canvas as background
+        var canvas = Canvas(drawBitmap)
+        canvas = surfaceHolder.lockCanvas()
+        canvas.drawBitmap(drawBitmap, 0f, 0f, null)
+        surfaceHolder.unlockCanvasAndPost(canvas)
 
+        //bitmap for soccerelement
         soccerElement = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
     }
 

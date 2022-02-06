@@ -12,4 +12,8 @@ class ProjectRepository(private val projectDao: ProjectDao) {
     fun getProjects(): Flow<List<Project>> {
         return projectDao.getAllProjects()
     }
+
+    fun delete(project: Project) {
+        projectDao.delete(project)
+    }
 }

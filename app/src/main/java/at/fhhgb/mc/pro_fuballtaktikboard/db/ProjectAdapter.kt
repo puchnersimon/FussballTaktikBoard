@@ -3,10 +3,10 @@ package at.fhhgb.mc.pro_fuballtaktikboard.db
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import at.fhhgb.mc.pro_fuballtaktikboard.R
-import at.fhhgb.mc.pro_fuballtaktikboard.RecyclerAdapter_Main
 import at.fhhgb.mc.pro_fuballtaktikboard.models.Project
 
 class ProjectAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -14,7 +14,7 @@ class ProjectAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var listOfProjects = emptyList<Project>()
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        var projectName: TextView = view.findViewById<TextView>(R.id.textView_rv_cell_project)
+        var projectName: TextView = view.findViewById(R.id.textView_rv_cell_project)
     }
 
     fun setProjects(listOfProjects: List<Project>) {

@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -61,28 +62,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.buttonMainAdd.setOnClickListener {
-            /*
-            //alert vor input - create new project
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Create new Project!")
-            val input = EditText(this)
-            input.setHint("new Projectname")
-            input.inputType = InputType.TYPE_CLASS_TEXT
-            builder.setView(input)
-            //set buttons for alert
-            builder.setPositiveButton("Ok", DialogInterface.OnClickListener { dialog, which ->
-                projectList.add(input.text.toString())
-            } )
-            builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, which ->
-                dialog.cancel()
-            })
-            //show alert
-            builder.show()
-
-            //update RecyclerView_Main
-            adapter.notifyDataSetChanged()
-
-             */
             val view = View.inflate(this@MainActivity, R.layout.create_project, null)
             val builder = AlertDialog.Builder(this@MainActivity)
             builder.setView(view)
