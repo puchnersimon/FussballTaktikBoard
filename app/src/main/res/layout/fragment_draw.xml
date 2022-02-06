@@ -98,7 +98,7 @@
                         android:id="@+id/fragment_draw_save_to_gallery"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/save" />
+                        app:srcCompat="@drawable/save_diskette" />
 
                     <ImageView
                         android:id="@+id/fragment_draw_white"

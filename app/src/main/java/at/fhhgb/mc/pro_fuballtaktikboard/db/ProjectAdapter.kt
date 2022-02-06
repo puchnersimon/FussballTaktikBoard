@@ -15,6 +15,8 @@ class ProjectAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         var projectName: TextView = view.findViewById(R.id.textView_rv_cell_project)
+        var delete: ImageButton = view.findViewById(R.id.button_rv_cell_removeItem)
+        var edit: ImageButton = view.findViewById(R.id.button_rv_cell_edit_projectname)
     }
 
     fun setProjects(listOfProjects: List<Project>) {
@@ -35,6 +37,8 @@ class ProjectAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         val projectHolder = holder as ViewHolder
 
         projectHolder.projectName.text = project.projectName
+
+
     }
 
     override fun getItemCount(): Int {
